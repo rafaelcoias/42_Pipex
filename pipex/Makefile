@@ -8,7 +8,9 @@ BONUS =
 
 SRC_PATH = ./src/
 
-SRC = ${SRC_PATH}main.c
+SRC = ${SRC_PATH}main.c		\
+	${SRC_PATH}check.c	\
+	${SRC_PATH}error_msg.c	\
 
 ########## 		  INCLUDES 		##########
 
@@ -28,13 +30,13 @@ CC = gcc
 
 ########## 		   FLAGS 		##########
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 ########## 		   COLORS 		##########
 
 GREEN		=	\033[0;32m
 YELLOW		=	\033[0;33m
-RED		=	\033[0;31m
+RED			=	\033[0;31m
 RESET		=	\033[0m
 
 ########## 		  COMMANDS		##########

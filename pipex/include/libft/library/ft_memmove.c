@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/24 15:35:06 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/05/24 17:03:05 by rade-sar         ###   ########.fr       */
+/*   Created: 2021/10/20 10:33:45 by rade-sar          #+#    #+#             */
+/*   Updated: 2021/10/28 21:44:18 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "../libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	if (argc != 5)
-		return (0);
-	check_all(argc, argv);
-	return (0);
+	char		*aux;
+	const char	*str;
+
+	if (dst == NULL)
+		return (NULL);
+	aux = dst;
+	str = src;
+	if (dst <= src)
+		while (len--)
+			*aux++ = *str++;
+	else
+	{
+		aux = aux + len;
+		str = str + len;
+		while (len--)
+			*--aux = *--str;
+	}
+	return (dst);
 }

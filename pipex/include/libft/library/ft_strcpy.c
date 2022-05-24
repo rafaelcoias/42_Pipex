@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/24 15:35:06 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/05/24 17:03:05 by rade-sar         ###   ########.fr       */
+/*   Created: 2022/05/24 16:56:00 by rade-sar          #+#    #+#             */
+/*   Updated: 2022/05/24 16:56:31 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
-
-int	main(int argc, char **argv)
+char	*ft_strcpy(char *dest, char *src)
 {
-	if (argc != 5)
-		return (0);
-	check_all(argc, argv);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

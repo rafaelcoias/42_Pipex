@@ -114,10 +114,6 @@ RANLIB = ranlib
 
 NORM_LIBFT_MSG = @echo "\n<========== $(YELLOW)Norm $(NAME)$(RESET) ==========>\n"
 
-CREATE_LIBFT_MSG = @echo "\n<========== $(GREEN)$(NAME) created$(RESET) ==========>\n"
-
-REMOVE_LIBFT_MSG = @echo "\n<========== $(RED)$(NAME) removed$(RESET) ==========>\n"
-
 ########## 		  TARGETS 		##########
 
 ${NAME}: ${OBJ}
@@ -140,7 +136,7 @@ re:	fclean all
 
 norm:
 	${NORM_LIBFT_MSG}
-	@cd ${LIBFT_PATH} && norminette -R CheckForbiddenSourceHeader *.c && norminette -R CheckDefine *.h
+	@cd ${LIBFT_PATH} && norminette -R CheckForbiddenSourceHeader *.c && cd ../ && norminette -R CheckDefine *.h
 	@echo "\n"
 	@cd ${PRINT_F_PATH} && norminette -R CheckForbiddenSourceHeader *.c && norminette -R CheckDefine *.h
 	@echo "\n"
