@@ -11,6 +11,7 @@ SRC_PATH = ./src/
 SRC = ${SRC_PATH}main.c		\
 	${SRC_PATH}check.c	\
 	${SRC_PATH}error_msg.c	\
+	${SRC_PATH}process_pipe.c	\
 
 ########## 		  INCLUDES 		##########
 

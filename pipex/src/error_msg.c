@@ -15,7 +15,7 @@
 void	error_msg(char *str)
 {
 	ft_putstr_fd(RED, 2);
-	ft_putstr_fd("\nError\n", 2);
+	perror("\nError\n");
 	ft_putstr_fd(RESET, 2);
 	ft_putstr_fd(str, 2);
 	ft_putchar_fd('\n', 2);

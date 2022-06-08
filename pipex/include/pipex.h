@@ -14,16 +14,41 @@
 # define PIPEX_H
 
 # include "./libft/libft.h"
+# include <unistd.h>
 
-/* ERRORS */
+/* DEFINE ERRORS */
 
+# define ARG_ERROR "Wrong number of arguments.\n"
 # define FILE_ERROR "Could not access file (file path may not exist).\n"
-# define DIR_ERROR "Argument is a directory, it must be a file."
+# define DIR_ERROR "Argument is a directory, it must be a file.\n"
+# define PIPE_ERROR "Pipe function error.\n"
+# define FORK_ERROR "Fork function error.\n"
+# define EXEC_ERROR "Exec function error."
 # define CMD_ERROR "Argument is not a valid shell command.\n"
+
+/* STRUCT */
+
+typedef struct s_data
+{
+    int     fd_in;
+    int     fd_out;
+    int     fd_pipe[2];
+    char    *cmd1;
+    char    *path_cmd1;
+    char    *cmd2;
+    char    *path_cmd2;
+    char    **paths;
+    char    **envp;
+}   t_data;
+
 
 /* CHECK FUNCTIONS */
 
-void	check_all(int argc, char **argv);
+void	check_all(t_data *data, int argc, char **argv, char **envp);
 void	error_msg(char *str);
+
+/* PROCESS PIPE FUNCTIONS */
+
+void    process_pipe(t_data *data);
 
 #endif
