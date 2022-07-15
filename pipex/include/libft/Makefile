@@ -6,7 +6,7 @@
 #    By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/20 12:10:14 by rade-sar          #+#    #+#              #
-#    Updated: 2022/04/26 11:48:17 by rade-sar         ###   ########.fr        #
+#    Updated: 2022/07/13 05:15:11 by rade-sar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,8 @@ SRC = 	$(LIBFT_PATH)ft_isalpha.c	\
 		$(LIBFT_PATH)ft_lstclear.c 		\
 		$(LIBFT_PATH)ft_lstiter.c 		\
 		$(LIBFT_PATH)ft_lstmap.c		\
+		$(LIBFT_PATH)ft_putlst_fd.c		\
+		$(LIBFT_PATH)ft_free_mtx.c		\
 		$(GNL_PATH)/get_next_line.c			\
 		$(GNL_PATH)/get_next_line_utils.c	\
 		$(PRINT_F_PATH)/ft_printf.c			\

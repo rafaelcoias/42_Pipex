@@ -6,7 +6,7 @@
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 17:03:35 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/05/24 17:04:30 by rade-sar         ###   ########.fr       */
+/*   Updated: 2022/07/13 05:22:15 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PIPEX_H
 
 # include "./libft/libft.h"
-# include <unistd.h>
 
 /* DEFINE ERRORS */
 
@@ -30,16 +29,16 @@
 
 typedef struct s_data
 {
-    int     fd_in;
-    int     fd_out;
-    int     fd_pipe[2];
-    char    *cmd1;
-    char    *path_cmd1;
-    char    *cmd2;
-    char    *path_cmd2;
-    char    **paths;
-    char    **envp;
-}   t_data;
+	int	fd_in;
+	int	fd_out;
+	int	fd_pipe[2];
+	char	**cmd1;
+	char	*path_cmd1;
+	char	**cmd2;
+	char	*path_cmd2;
+	char	**paths;
+	char	**envp;
+}		t_data;
 
 
 /* CHECK FUNCTIONS */
@@ -49,6 +48,6 @@ void	error_msg(char *str);
 
 /* PROCESS PIPE FUNCTIONS */
 
-void    process_pipe(t_data *data);
+void	process_pipe(t_data *data);
 
 #endif

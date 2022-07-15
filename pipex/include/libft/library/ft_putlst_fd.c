@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_msg.c                                        :+:      :+:    :+:   */
+/*   ft_putlst_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rade-sar <rade-sar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/24 15:41:15 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/07/11 21:19:04 by bmiguel-         ###   ########.fr       */
+/*   Created: 2022/07/13 00:48:54 by rade-sar          #+#    #+#             */
+/*   Updated: 2022/07/13 04:02:45 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "../libft.h"
 
-void	error_msg(char *str)
+void	ft_putlst_fd(char **lst, int fd)
 {
-	ft_putstr_fd(RED, 2);
-	ft_putstr_fd("\nError\n", 2);
-	ft_putstr_fd(RESET, 2);
-	ft_putstr_fd(str, 2);
-	ft_putchar_fd('\n', 2);
-	exit(1);
+	int	i;
+
+	if (!lst)
+		return ;
+	i = 0;
+	while (lst[i])
+	{
+		ft_putstr_fd(lst[i], fd);
+		ft_putchar_fd('\n', fd);
+		i++;
+	}
 }

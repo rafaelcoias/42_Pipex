@@ -6,7 +6,7 @@
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 20:06:00 by rade-sar          #+#    #+#             */
-/*   Updated: 2021/10/28 18:31:39 by rade-sar         ###   ########.fr       */
+/*   Updated: 2022/07/13 00:32:10 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strchr(const char *s, int c)
 	char	lt;
 
 	lt = c;
+	if (!s)
+		return (NULL);
 	while (*s != '\0')
 	{
 		if (*s == lt)

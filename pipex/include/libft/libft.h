@@ -6,7 +6,7 @@
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 11:43:09 by rade-sar          #+#    #+#             */
-/*   Updated: 2021/10/27 16:35:40 by rade-sar         ###   ########.fr       */
+/*   Updated: 2022/07/13 05:14:51 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <ctype.h>
+# include <sys/types.h>
+# include <sys/wait.h>
 
 /* COLORS */
 
@@ -66,12 +68,14 @@ char		*ft_itoa(int n);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char		*ft_strcpy(char *dest, char *src);
 
+void		ft_free_mtx(char **mtx);
 void		ft_striteri(char *s, void (*f)(unsigned int, char*));
 void		ft_bzero(void *s, size_t n);
 void		ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(char *s, int fd);
 void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
+void		ft_putlst_fd(char **lst, int fd);
 void		ft_lstadd_front(t_list **lst, t_list *new);
 void		ft_lstadd_back(t_list **lst, t_list *new);
 void		ft_lstdelone(t_list *lst, void (*del)(void *));
