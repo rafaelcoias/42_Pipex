@@ -110,6 +110,5 @@ commit:
 	git add .
 	git commit -m "update"
 	git push
-	git log
 
 .PHONY: all clean fclean re norm commit
