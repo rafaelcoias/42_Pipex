@@ -2,16 +2,24 @@
 
 NAME = pipex 
 
-BONUS = 
+BONUS = pipex_bonus 
 
 ########## 		  SOURCES 		##########
 
 SRC_PATH = ./src/
 
+BONUS_PATH = ./bonus/
+
 SRC = ${SRC_PATH}main.c		\
 	${SRC_PATH}check.c	\
 	${SRC_PATH}error_msg.c	\
 	${SRC_PATH}process_pipe.c	\
+
+BNS = ${BONUS_PATH}main.c	\
+		${BONUS_PATH}check.c	\
+		${BONUS_PATH}error_msg.c	\
+		${BONUS_PATH}process_pipe.c	\
+		${BONUS_PATH}get_cmds.c		\
 
 ########## 		  INCLUDES 		##########
 
@@ -26,6 +34,8 @@ LIBFT_PATH = ./include/libft/
 ########## 		COMPILATION 	##########
 
 OBJ = ${SRC:.c=.o}
+
+OBJB = ${BNS:.c=.o}
 
 CC = gcc
 
@@ -68,30 +78,38 @@ ${NAME}: ${OBJ}
 	${MAKE_LIBFT} -s
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L $(LIBFT_PATH) -lft
 
-${BONUS}: 
+${BONUS}: ${OBJB}
+	${MAKE_LIBFT} -s
+	$(CC) $(CFLAGS) -o $(BONUS) $(OBJB) -L $(LIBFT_PATH) -lft
 
 ########## 		   RULES 		##########
 
 all: ${NAME} 
 	${CREATE_PROJ_MSG}
 
-bonus:
+bonus: ${BONUS}
+	${CREATE_BONUS_MSG}
 
 clean:
 	${CLEAN_LIBFT}
-	${RM} ${OBJ}
+	${RM} ${OBJ} ${OBJB}
 
 fclean: clean 
 	${FCLEAN_LIBFT}
 	${RM} ${NAME} ${BONUS}
 	${REMOVED_MSG}
-	
 
-re:	fclean all
+re: fclean all
 
 norm:
 	@cd ${LIBFT_PATH} && make norm
 	${NORM_PROJ_MSG}
 	@cd ./src && norminette -R CheckForbiddenSourceHeader *.c && cd ../include && norminette -R CheckDefine *.h
 
-.PHONY: all clean fclean re norm
+commit:
+	git add .
+	git commit -m "update"
+	git log
+	git push
+
+.PHONY: all clean fclean re norm commit

@@ -6,7 +6,7 @@
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 17:03:35 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/07/13 05:22:15 by rade-sar         ###   ########.fr       */
+/*   Updated: 2022/07/16 00:29:57 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,15 @@ typedef struct s_data
 	int	fd_in;
 	int	fd_out;
 	int	fd_pipe[2];
+	int	here_doc;
+	int	argc;
+	char	**argv;
+	char	**envp;
 	char	**cmd1;
 	char	*path_cmd1;
 	char	**cmd2;
 	char	*path_cmd2;
 	char	**paths;
-	char	**envp;
 }		t_data;
 
 
@@ -49,5 +52,7 @@ void	error_msg(char *str);
 /* PROCESS PIPE FUNCTIONS */
 
 void	process_pipe(t_data *data);
+
+char	*get_path(t_data *data, int arg);
 
 #endif
