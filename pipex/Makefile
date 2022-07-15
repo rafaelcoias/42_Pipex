@@ -109,7 +109,7 @@ norm:
 commit:
 	git add .
 	git commit -m "update"
-	git log
 	git push
+	git log
 
 .PHONY: all clean fclean re norm commit
