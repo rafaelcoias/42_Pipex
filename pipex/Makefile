@@ -14,6 +14,7 @@ SRC = ${SRC_PATH}main.c		\
 	${SRC_PATH}check.c	\
 	${SRC_PATH}error_msg.c	\
 	${SRC_PATH}process_pipe.c	\
+	${SRC_PATH}get_cmds.c
 
 BNS = ${BONUS_PATH}main.c	\
 		${BONUS_PATH}check.c	\

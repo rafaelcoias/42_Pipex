@@ -6,14 +6,15 @@
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 15:41:15 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/07/11 21:19:04 by bmiguel-         ###   ########.fr       */
+/*   Updated: 2022/07/27 22:37:13 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-void	error_msg(char *str)
+void	error_msg(t_data *data, char *str)
 {
+	(void)data;
 	ft_putstr_fd(RED, 2);
 	ft_putstr_fd("\nError\n", 2);
 	ft_putstr_fd(RESET, 2);

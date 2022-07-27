@@ -6,24 +6,21 @@
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 15:35:12 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/07/16 00:35:50 by rade-sar         ###   ########.fr       */
+/*   Updated: 2022/07/27 21:54:59 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-void	check_all(t_data *data, int argc, char **argv, char **envp)
+void	check_all(t_data *data, char **argv)
 {
 	int	fd;
 	int	fd2;
 
-	(void)argc;
-	(void)envp;
-	(void)data;
 	fd = open(argv[1], O_DIRECTORY);
 	fd2 = open(argv[4], O_DIRECTORY);
 	if (fd > 0 || fd2 > 0)
-		error_msg(DIR_ERROR);
+		error_msg(data, DIR_ERROR);
 	if (access(argv[1], F_OK))
-		error_msg(FILE_ERROR);
+		error_msg(data, FILE_ERROR);
 }

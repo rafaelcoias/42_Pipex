@@ -6,11 +6,36 @@
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 15:35:06 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/07/16 00:21:55 by rade-sar         ###   ########.fr       */
+/*   Updated: 2022/07/27 22:30:45 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
+
+static int	here_doc(t_data *data, char **argv)
+{
+	char	*limiter;
+	char	*line;
+
+	if (ft_strcmp(argv[1], "here_doc"))
+		return (0);
+	data->fd_heredoc = open(".here_doc", O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	limiter = ft_strjoin(argv[2], "\n");
+	while (1)
+	{
+		ft_putstr_fd("pipe heredoc> ", STDOUT_FILENO);
+		line = get_next_line(0);
+		if (!ft_strcmp(line, limiter))
+				break ;
+		write(data->fd_heredoc, line, ft_strlen(line));
+		free(line);
+	}
+	free(line);
+	free(limiter);
+	close(data->fd_heredoc);
+	data->fd_in = open(".here_doc", O_RDONLY);
+	return (1);
+}
 
 static char	**get_env_path(char **envp)
 {
@@ -26,12 +51,11 @@ static char	**get_env_path(char **envp)
 
 static void	free_all(t_data *data)
 {
+	close(data->fd_in);
+	close(data->fd_out);
 	close(data->fd_pipe[0]);
 	close(data->fd_pipe[1]);
-	ft_free_mtx(data->cmd1);
-	ft_free_mtx(data->cmd2);
-	free(data->path_cmd1);
-	free(data->path_cmd2);
+	unlink(".here_doc");
 	ft_free_mtx(data->paths);
 }
 
@@ -39,18 +63,19 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_data	data;
 
-	if (argc < 5)
-		error_msg(ARG_ERROR);
-	check_all(&data, argc, argv, envp);
-	data.fd_in = open(argv[1], O_RDONLY);
-	data.fd_out = open(argv[4], O_CREAT | O_WRONLY | O_TRUNC,
-				S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | 0666);
+	data.here_doc = here_doc(&data, argv);
+	if (argc < 5 || (data.here_doc && argc < 6))
+		error_msg(&data, ARG_ERROR);
+	if (!data.here_doc)
+	{
+		check_all(&data, argv);
+		data.fd_in = open(argv[1], O_RDONLY);
+	}
+	data.fd_out = open(argv[argc - 1], O_CREAT | O_WRONLY | O_APPEND, 0644);
 	data.envp = envp;
 	data.argc = argc;
 	data.argv = argv;
 	data.paths = get_env_path(envp);
-	if (pipe(data.fd_pipe) == -1)
-		error_msg(PIPE_ERROR);
 	process_pipe(&data);
 	free_all(&data);
 }
