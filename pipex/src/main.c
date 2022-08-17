@@ -6,7 +6,7 @@
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 15:35:06 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/07/27 23:29:49 by rade-sar         ###   ########.fr       */
+/*   Updated: 2022/08/17 21:07:44 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	main(int argc, char **argv, char **envp)
 	check_all(&data, argv);
 	data.fd_in = open(argv[1], O_RDONLY);
 	data.fd_out = open(argv[4], O_CREAT | O_WRONLY | O_TRUNC, 0666);
+	if (data.fd_in == -1 || data.fd_out == -1)
+		error_msg(&data, OPEN_ERROR);
 	data.envp = envp;
 	data.argc = argc;
 	data.argv = argv;

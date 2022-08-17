@@ -6,7 +6,7 @@
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 15:35:06 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/07/27 22:30:45 by rade-sar         ###   ########.fr       */
+/*   Updated: 2022/08/17 21:16:41 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static int	here_doc(t_data *data, char **argv)
 	if (ft_strcmp(argv[1], "here_doc"))
 		return (0);
 	data->fd_heredoc = open(".here_doc", O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	if (data->fd_heredoc == -1)
+		error_msg(data, OPEN_ERROR);
 	limiter = ft_strjoin(argv[2], "\n");
 	while (1)
 	{
@@ -72,6 +74,8 @@ int	main(int argc, char **argv, char **envp)
 		data.fd_in = open(argv[1], O_RDONLY);
 	}
 	data.fd_out = open(argv[argc - 1], O_CREAT | O_WRONLY | O_APPEND, 0644);
+	if (data.fd_out == -1 || data.fd_in == -1)
+		error_msg(&data, OPEN_ERROR);
 	data.envp = envp;
 	data.argc = argc;
 	data.argv = argv;

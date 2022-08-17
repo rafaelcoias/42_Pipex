@@ -6,7 +6,7 @@
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 17:03:35 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/07/27 21:55:11 by rade-sar         ###   ########.fr       */
+/*   Updated: 2022/08/17 21:05:30 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 # define DIR_ERROR "Argument is a directory, it must be a file.\n"
 # define PIPE_ERROR "Pipe function error.\n"
 # define FORK_ERROR "Fork function error.\n"
-# define EXEC_ERROR "Exec function error."
+# define EXEC_ERROR "Exec function error.\n"
+# define OPEN_ERROR "Open function error.\n"
 # define CMD_ERROR "Argument is not a valid shell command.\n"
 
 /* STRUCT */

@@ -6,7 +6,7 @@
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 15:35:12 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/07/27 21:54:59 by rade-sar         ###   ########.fr       */
+/*   Updated: 2022/08/17 21:14:30 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,6 @@ void	check_all(t_data *data, char **argv)
 		error_msg(data, DIR_ERROR);
 	if (access(argv[1], F_OK))
 		error_msg(data, FILE_ERROR);
+	close(fd);
+	close(fd2);
 }
