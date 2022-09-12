@@ -1,26 +1,16 @@
 ########## 		   NAMES 		##########
 
-NAME = pipex 
-
-BONUS = pipex_bonus 
+NAME = pipex
 
 ########## 		  SOURCES 		##########
 
 SRC_PATH = ./src/
-
-BONUS_PATH = ./bonus/
 
 SRC = ${SRC_PATH}main.c		\
 	${SRC_PATH}check.c	\
 	${SRC_PATH}error_msg.c	\
 	${SRC_PATH}process_pipe.c	\
 	${SRC_PATH}get_cmds.c
-
-BNS = ${BONUS_PATH}main.c	\
-		${BONUS_PATH}check.c	\
-		${BONUS_PATH}error_msg.c	\
-		${BONUS_PATH}process_pipe.c	\
-		${BONUS_PATH}get_cmds.c		\
 
 ########## 		  INCLUDES 		##########
 
@@ -65,8 +55,6 @@ RM = rm -f
 
 CREATE_PROJ_MSG = @echo "\n<========== $(GREEN)$(NAME) created$(RESET) ==========>\n"
 
-CREATE_BONUS_MSG = @echo "\n<========== $(GREEN)$(BONUS) created$(RESET) ==========>\n"
-
 REMOVED_MSG = @echo "\n<========== $(RED)$(NAME) removed$(RESET) ==========>\n"
 
 NORM_LIBFT_MSG = @echo "\n<========== $(YELLOW)Norm $(LIBFT)$(RESET) ==========>\n"
@@ -79,21 +67,14 @@ ${NAME}: ${OBJ}
 	${MAKE_LIBFT} -s
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L $(LIBFT_PATH) -lft
 
-${BONUS}: ${OBJB}
-	${MAKE_LIBFT} -s
-	$(CC) $(CFLAGS) -o $(BONUS) $(OBJB) -L $(LIBFT_PATH) -lft
-
 ########## 		   RULES 		##########
 
 all: ${NAME} 
 	${CREATE_PROJ_MSG}
 
-bonus: ${BONUS}
-	${CREATE_BONUS_MSG}
-
 clean:
 	${CLEAN_LIBFT}
-	${RM} ${OBJ} ${OBJB}
+	${RM} ${OBJ}
 
 fclean: clean 
 	${FCLEAN_LIBFT}

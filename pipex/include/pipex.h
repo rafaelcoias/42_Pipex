@@ -6,7 +6,7 @@
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 17:03:35 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/08/17 21:05:30 by rade-sar         ###   ########.fr       */
+/*   Updated: 2022/09/12 12:29:35 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,19 @@
 
 typedef struct s_data
 {
-	int	fd_in;
-	int	fd_out;
-	int	fd_pipe[2];
-	int	fd_heredoc;
-	int	here_doc;
+	int		fd_in;
+	int		fd_out;
+	int		fd_pipe[2];
+	int		fd_heredoc;
+	int		here_doc;
 	char	*limiter;
-	int	argc;
+	int		argc;
 	char	**argv;
 	char	**envp;
 	char	*path_cmd1;
 	char	*path_cmd2;
 	char	**paths;
 }		t_data;
-
 
 /* CHECK FUNCTIONS */
 

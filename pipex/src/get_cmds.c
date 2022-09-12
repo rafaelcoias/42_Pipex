@@ -6,7 +6,7 @@
 /*   By: rade-sar <rade-sar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 00:08:51 by rade-sar          #+#    #+#             */
-/*   Updated: 2022/07/27 22:37:50 by rade-sar         ###   ########.fr       */
+/*   Updated: 2022/09/12 12:30:10 by rade-sar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ char	*get_path(t_data *data, int arg)
 	char	*add_slash;
 	char	*path;
 	char	**cmd;
-	int	i;
-	
+	int		i;
+
 	cmd = ft_split(data->argv[arg], ' ');
 	if (ft_strchr(cmd[0], '/') && !access(cmd[0], F_OK))
 		return (cmd[0]);
