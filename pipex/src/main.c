@@ -76,7 +76,10 @@ int	main(int argc, char **argv, char **envp)
 		check_all(&data, argv);
 		data.fd_in = open(argv[1], O_RDONLY);
 	}
-	data.fd_out = open(argv[argc - 1], O_CREAT | O_WRONLY | O_APPEND, 0644);
+	if (!data.here_doc)
+		data.fd_out = open(argv[argc - 1], O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	else
+		data.fd_out = open(argv[argc - 1], O_CREAT | O_WRONLY | O_APPEND, 0644);
 	if (data.fd_out == -1 || data.fd_in == -1)
 		error_msg(&data, OPEN_ERROR);
 	data.envp = envp;
