@@ -55,6 +55,7 @@ The function **dup2()** is used to change where the output goes. Instead of goin
 
 <details><summary>My Pipex</summary>
   
+  ![Screencast from 19-09-2022 00_02_27](https://user-images.githubusercontent.com/91686183/190931989-878ae3b9-86ee-4c66-ad44-a58749431806.gif)
   
 </details>
 
