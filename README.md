@@ -8,6 +8,8 @@ Create a program that works like shell commands. Using pipes and file descriptor
 
   - Imperative programming
   - Unix
+  - Forks - processes
+  - Change file descriptors
 
 ## Goal
 
