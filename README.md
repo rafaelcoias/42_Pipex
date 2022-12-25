@@ -4,6 +4,11 @@
 
 Create a program that works like shell commands. Using pipes and file descriptors.
 
+## Skills Learned
+
+  - Imperative programming
+  - Unix
+
 ## Goal
 
 This project will let you discover in detail a UNIX mechanism that you already know by using it in your program.
